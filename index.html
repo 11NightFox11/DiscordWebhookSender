@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discord WebHook message sender</title>
+</head>
+<body>
+    <form class="form">
+        <h1>Webhook URL:</h1>
+        <input type="url" id="webhookUrl"><br><br>
+        <h1>Message content:</h1>
+        <input type="text" id="sendText"><br><br><br><br><br>
+        <button onclick="send(document.getElementById('webhookUrl').value, document.getElementById('sendText').value);" type="button">Send!</button>
+    </form>
+</body>
+</html>
+
+<script>
+
+    function send(url, text){
+        
+        fetch(url, {
+            method: "POST",
+            body: JSON.stringify({
+                content: text
+        }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        });
+
+    }
+
+</script>
+
+<style>
+    body{
+        background-image: url(https://images.hdqwalls.com/wallpapers/bthumb/gradient-lines-blur-8k-2u.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-family: monospace;
+    }
+
+    .form{
+        align-items: center;
+        text-align: center;
+        margin-top: 11%;
+        color:azure; 
+    }
+
+    button{
+        background-color: dimgray;
+        color:azure;
+        border-radius: 10px;
+        width: 40%;
+        margin-top: 10px;
+        padding-top:10px;
+        padding-bottom: 10px;
+        font-size: large;
+    }
+
+    input{
+        background-color: dimgray;
+        border-radius: 10px;
+        width: 39.5%;
+        margin-top: 10px;
+        padding-top:10px;
+        padding-bottom: 10px;
+        font-size: large;
+    }
+
+    h1{
+        font-size: xx-large;
+    }
+</style>
